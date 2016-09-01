@@ -2,12 +2,12 @@
 
 Elgg plugin containing PHP and JS libraries for other map entities plugins.
 
-###Contents###
+== Contents ==
 
 1. Features
 2. Installation
 
-== 1. Features ==
+###1. Features###
 
 - Load all required JS libraries for other map aware Elgg plugins
 - Elgg input for location autocomplete, compatible with Profile Manager plugin
