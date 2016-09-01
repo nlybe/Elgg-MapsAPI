@@ -1,8 +1,8 @@
-******* AgoraMap Maps Api Plugin *******
+##AgoraMap Maps Api Plugin for Elgg##
 
 Elgg plugin containing PHP and JS libraries for other map entities plugins.
 
-== Contents ==
+###Contents###
 
 1. Features
 2. Installation
@@ -16,7 +16,7 @@ Elgg plugin containing PHP and JS libraries for other map entities plugins.
 - Option to select the default layer
 - Various options on configure in settings such as default location, default zoom, default width & height of map, clustering (yes/no), distance unit of measurement
 
-== 2. Installation ==
+###2. Installation###
 
 Requires: Elgg 2.1 or higher
 
