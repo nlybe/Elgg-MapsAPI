@@ -1,0 +1,14 @@
+{
+    "name": "nlybe/amap_maps_api",
+    "type": "elgg-plugin",
+    "require": {
+        "composer/installers": ">=1.0.8"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": ">=1.0.8",
+        "willdurand/geocoder": "@stable",
+        "treffynnon/navigator": "1.0.0"
+    },        
+    "license": "GPL-2.0"
+}
