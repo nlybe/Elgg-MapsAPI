@@ -3,10 +3,12 @@
 Elgg plugin containing PHP and JS libraries for other map entities plugins.
 
 == Contents ==
+
 1. Features
 2. Installation
 
 == 1. Features ==
+
 - Load all required JS libraries for other map aware Elgg plugins
 - Elgg input for location autocomplete, compatible with Profile Manager plugin
 - Elgg map location input tool, compatible with Profile Manager plugin
@@ -15,6 +17,7 @@ Elgg plugin containing PHP and JS libraries for other map entities plugins.
 - Various options on configure in settings such as default location, default zoom, default width & height of map, clustering (yes/no), distance unit of measurement
 
 == 2. Installation ==
+
 Requires: Elgg 2.1 or higher
 
 1. Upload amap_maps_api in "/mod/" elgg folder
