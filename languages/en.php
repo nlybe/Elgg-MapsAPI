@@ -27,10 +27,10 @@ $language = array(
     'amap_maps_api:search:error:action_undefined' => 'Seach action is undefined',
     'amap_maps_api:input:map:title' => 'Location map',
     'amap_maps_api:input:autocomplete:title' => 'Autocomplete location',
-	'amap_maps_api:form:location' => 'Location', 
-	'amap_maps_api:form:setlocation' => 'Location', 
-	'amap_maps_api:form:search' => 'Search', 
-	'amap_maps_api:form:latlon' => 'Lat/Lon: ',     
+    'amap_maps_api:form:location' => 'Location', 
+    'amap_maps_api:form:setlocation' => 'Location', 
+    'amap_maps_api:form:search' => 'Search', 
+    'amap_maps_api:form:latlon' => 'Lat/Lon: ',     
 
     // settings
     'amap_maps_api:settings:google_maps' => 'Google Maps settings',
@@ -38,7 +38,7 @@ $language = array(
     'amap_maps_api:settings:search_options' => 'Search options',
     'amap_maps_api:settings:api_keys:title' => 'Providers API Keys',
     'amap_maps_api:settings:google_api_key' => 'Enter your Google API key',
-    'amap_maps_api:settings:google_api_key:help' => 'Go to <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">https://developers.google.com/maps/documentation/javascript/tutorial#api_key</a> to get your "Google API key". <br />(<strong>Note:</strong> the API key is NOT required. Only if you want stats on your api usage or if you have a paid API account, the key is needed)',
+    'amap_maps_api:settings:google_api_key:help' => 'Go to <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">https://developers.google.com/maps/documentation/javascript/tutorial#api_key</a> to get your "Google API key".',
     'amap_maps_api:settings:google_server_key' => 'Enter your Google Server API key',
     'amap_maps_api:settings:google_server_key:help' => 'If enable the <strong>Update user timezone</strong> option, you need to have a server key grom Google API. Go to <a target="_blank" href="https://developers.google.com/maps/faq">https://developers.google.com/maps/faq</a> for more information". You will have also to enable the Google Maps Time Zone API on API account.<br />(<strong>Note:</strong> the Server API key is NOT required. Only if you want stats on your api usage or if you have a paid API account, the server key is needed)',
     'amap_maps_api:settings:mapquest_api_key' => 'Enter your Mapquest API key',

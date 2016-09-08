@@ -5,6 +5,7 @@ CHANGE LOG
 2.9.4	(Aug 2016)
 --------------------------------
 - Fixed: version of google map api JS file called
+- Deleted: notice that Google Maps API is Key not required
 
 2.9.3	(Aug 2016)
 --------------------------------
