@@ -555,11 +555,13 @@ function amap_ma_get_initial_radius($pluginname) {
  * 
  * @return Elgg Entity as given
  */
-function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $elocation = null, $eotherinfo = null, $m_icon_light = false, $eurl = false) {
+function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $elocation = null, $eotherinfo = null, $m_icon_light = false, $eurl = false, $map_icon = false) {
     $edescription = elgg_get_excerpt($edescription);
     $namecleared = amap_ma_remove_shits($entity->$etitle);
     $description = amap_ma_remove_shits(elgg_get_excerpt($entity->description, 100));
-    $map_icon = amap_ma_get_entity_icon($entity);
+    if (!$map_icon) {
+        $map_icon = amap_ma_get_entity_icon($entity);
+    }
 
     if ($elocation) {
         $location = $elocation;

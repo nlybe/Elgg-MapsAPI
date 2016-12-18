@@ -20,7 +20,6 @@ if($map_zoom == '' || !is_numeric($map_zoom)){
 if (elgg_instanceof($entity) && $show_map) {
 
     if ($entity->getLatitude() && $entity->getLongitude()) {
-        elgg_load_library('elgg:amap_maps_api');  
         elgg_require_js("amap_maps_api/location_map");    
     
         if (($entity instanceof \ElggUser) || ($entity instanceof \ElggGroup))

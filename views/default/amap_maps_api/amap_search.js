@@ -93,7 +93,7 @@ define(function (require) {
         var change_title = $('#change_title').val();
         var group_guid = $('#group_guid').val();
         var s_change_title = $('#s_change_title').val();
-//console.log(s_change_title);
+
         var showradius;
         if ($('#showradius').is(':checked'))
             showradius = 1;

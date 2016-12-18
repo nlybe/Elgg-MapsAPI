@@ -2,6 +2,11 @@
 
 CHANGE LOG
 
+2.9.5	(Dec 2016)
+--------------------------------
+- Entity map icon can be passed now from origin plugin
+- Small code improvements
+
 2.9.4	(Aug 2016)
 --------------------------------
 - Fixed: version of google map api JS file called
