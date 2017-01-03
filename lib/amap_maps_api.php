@@ -1,10 +1,10 @@
 <?php
 /**
  * Elgg AgoraMap Maps Api plugin
- * @package amap_maps_api 
+ * @package amap_maps_api
  */
 
-// Based on object location, save his coords. 
+// Based on object location, save his coords.
 function amap_ma_save_object_coords($location, $object, $pluginname, $lat_g = '', $lng_g = '') {
     if ($lat_g && $lng_g) {
         $lat = $lat_g;
@@ -66,11 +66,11 @@ function amap_ma_geocode_location($location) {
 }
 
 // get online users
-function amap_ma_get_online_users_map(array $options = array()) { 
+function amap_ma_get_online_users_map(array $options = array()) {
     //$count = find_active_users(600, 10, 0, true);
     $options = array_merge(array(
             'seconds' => 600,
-    ), $options);    
+    ), $options);
     $objects = find_active_users($options, 0, 0);
 
     return $objects;
@@ -349,7 +349,7 @@ function amap_ma_not_permit_public_access() {
     return false;
 }
 
-// Check if membersmap is enabled for global map 
+// Check if membersmap is enabled for global map
 function amap_ma_check_if_membersmap_gm_enabled() {
     $gm_membersmap = trim(elgg_get_plugin_setting('gm_membersmap', AMAP_MA_PLUGIN_ID));
 
@@ -360,7 +360,7 @@ function amap_ma_check_if_membersmap_gm_enabled() {
     return false;
 }
 
-// Check if groupsmap is enabled for global map 
+// Check if groupsmap is enabled for global map
 function amap_ma_check_if_groupsmap_gm_enabled() {
     $gm_groupsmap = trim(elgg_get_plugin_setting('gm_groupsmap', AMAP_MA_PLUGIN_ID));
 
@@ -371,7 +371,7 @@ function amap_ma_check_if_groupsmap_gm_enabled() {
     return false;
 }
 
-// Check if agora is enabled for global map 
+// Check if agora is enabled for global map
 function amap_ma_check_if_agora_gm_enabled() {
     $gm_agora = trim(elgg_get_plugin_setting('gm_agora', AMAP_MA_PLUGIN_ID));
 
@@ -382,7 +382,7 @@ function amap_ma_check_if_agora_gm_enabled() {
     return false;
 }
 
-// Check if pagesmap is enabled for global map 
+// Check if pagesmap is enabled for global map
 function amap_ma_check_if_pagesmap_gm_enabled() {
     $gm_pagesmap = trim(elgg_get_plugin_setting('gm_pagesmap', AMAP_MA_PLUGIN_ID));
 
@@ -406,7 +406,7 @@ function amap_ma_get_entity_description($desc) {
     $entity_description = preg_replace('/[^(\x20-\x7F)]*/', '', $desc);
     $entity_description = amap_ma_remove_shits($entity_description);
 
-    // code below replace the &quot; with " from href of a tag. 
+    // code below replace the &quot; with " from href of a tag.
     // The Regular Expression filter
     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
     // Check if there is a url in the text
@@ -450,10 +450,10 @@ function amap_ma_get_entity_icon($u) {
         $user_icon = amap_ma_get_marker_icon('membersmap');
         if ($user_icon == 'user_icon_tiny.png') {
             $entity_icon = $u->getIconURL('tiny');
-        } 
+        }
         else if ($user_icon == 'user_icon_small.png') {
             $entity_icon = $u->getIconURL('small');
-        } 
+        }
         else {
             $entity_icon = elgg_get_site_url() . "mod/membersmap/graphics/{$user_icon}";
         }
@@ -469,12 +469,12 @@ function amap_ma_get_entity_icon($u) {
     }
     else if (elgg_instanceof($u, 'object', 'lcourt')) {
         $entity_icon = elgg_get_simplecache_url('leaguemanager/icon/icons/stadium.png');
-    } 
+    }
     else if (elgg_instanceof($u, 'object', 'page') || elgg_instanceof($u, 'object', 'page_top')) {
         //$entity_icon = elgg_get_site_url() . 'mod/pagesmap/graphics/' . amap_ma_get_marker_icon('pagesmap');
         $entity_icon = elgg_get_simplecache_url('pagesmap/icon/' . amap_ma_get_marker_icon('pagesmap'));
     }
-        
+
     return $entity_icon;
 }
 
@@ -544,7 +544,7 @@ function amap_ma_get_initial_radius($pluginname) {
 
 /**
  * Assign to entity additional information for showing on map
- * 
+ *
  * @param type $entity
  * @param type $etitle
  * @param type $edescription
@@ -552,7 +552,7 @@ function amap_ma_get_initial_radius($pluginname) {
  * @param type $eotherinfo
  * @param type $m_icon_light: if need to give entity map icon opacity, set this to true
  * @param type $eurl: if need to use other URL than standard entity URL, set this to true
- * 
+ *
  * @return Elgg Entity as given
  */
 function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $elocation = null, $eotherinfo = null, $m_icon_light = false, $eurl = false, $map_icon = false) {
@@ -613,7 +613,7 @@ function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $el
         $entity->setVolatileData('m_other_info', $eotherinfo);
     }
     $entity->setVolatileData('m_icon_light', $m_icon_light);
-    
+
     /* hide at the moment as the distance displayed is not well calculated
       if ($user->getLatitude() && $user->getLongitude()) {
       $distance = get_distance($entity->getLatitude(), $entity->getLongitude(), $user->getLatitude(), $user->getLongitude()); // distance in metres
