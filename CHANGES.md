@@ -1,6 +1,10 @@
-******* AgoraMap Maps Api Plugin *******
+# AgoraMap Maps Api Plugin
 
-CHANGE LOG
+## CHANGE LOG
+
+2.9.6	(Feb 2018)
+--------------------------------
+- Small improvements to autocomplete input
 
 2.9.5	(Dec 2016)
 --------------------------------

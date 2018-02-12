@@ -576,7 +576,7 @@ function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $el
             'text' => elgg_view('output/img', array('src' => agora_getImageUrl($entity, 'tiny'), 'class' => "elgg-photo")),
         ));
     }
-    if (elgg_instanceof($entity, 'object', 'lcourt')) {
+    else if (elgg_instanceof($entity, 'object', 'lcourt')) {
         elgg_load_library('elgg:leaguemanager');
         $entity_photo = elgg_view('output/img', array(
             'src' => lm_getEntityIconUrl($entity->getGUID(), 'tiny'),
@@ -587,7 +587,8 @@ function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $el
             'href' => ($eurl?$eurl:$entity->getURL()),
             'text' => $entity_photo,
         ));
-    } elseif ($entity instanceof ElggUser || $entity instanceof ElggGroup) {
+    } 
+    else if ($entity instanceof ElggUser || $entity instanceof ElggGroup) {
         $icon = elgg_view('output/img', array(
             'src' => $entity->getIconURL('tiny'),
             'class' => "elgg-photo",

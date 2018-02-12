@@ -119,7 +119,7 @@ div.disabled
 }
 
 .nearby_search_form .txt_medium	{
-    max-width: 200px; 
+    max-width: 220px; 
 }
 
 .nearby_search_form .txt_big	{
@@ -127,7 +127,7 @@ div.disabled
 }
 
 .nearby_search_form .nsf_big	{
-    max-width: 220px; 
+    max-width: 400px; 
 }
 
 .nearby_search_form .float-alt {

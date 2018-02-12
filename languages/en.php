@@ -149,8 +149,8 @@ $language = array(
     'amap_maps_api:search:personalized:location' => 'Location search: ',
     'amap_maps_api:search:personalized:radius' => 'Radius search: ',
     'amap_maps_api:search:personalized:empty' => '<h3>No results on maps</h3>',
-	'amap_maps_api:search:proximity' => '%2$s km',
-	'amap_maps_api:search_types:proximity' => 'Location',    
+    'amap_maps_api:search:proximity' => '%2$s km',
+    'amap_maps_api:search_types:proximity' => 'Location',    
     
     // geo 
     'amap_maps_api:settings:proximity_search' => 'Enable proximity search in Elgg search results',
