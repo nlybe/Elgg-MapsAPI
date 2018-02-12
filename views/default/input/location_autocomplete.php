@@ -32,9 +32,4 @@ $defaults = array(
 
 $vars = array_merge($defaults, $vars);
 
-//echo elgg_format_element('input', $vars);
-echo elgg_view_input('text', $vars);
-
-?> 
-
-
+echo elgg_format_element('input', $vars);
