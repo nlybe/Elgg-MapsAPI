@@ -462,10 +462,10 @@ function amap_ma_get_entity_icon($u) {
     } else if (elgg_instanceof($u, 'object', 'agora')) {
         $adicon = amap_ma_get_marker_icon('agora');
         if ($adicon == 'ad_image.png') {
-            elgg_load_library('elgg:agora');
-            $entity_icon = agora_getImageUrl($u, 'tiny');
-        } else
+            $entity_icon = $u->getIconURL('tiny');
+        } else {
             $entity_icon = elgg_get_site_url() . 'mod/agora/graphics/' . amap_ma_get_marker_icon('agora');
+        }
     }
     else if (elgg_instanceof($u, 'object', 'lcourt')) {
         $entity_icon = elgg_get_simplecache_url('leaguemanager/icon/icons/stadium.png');
@@ -570,11 +570,7 @@ function amap_ma_set_entity_additional_info($entity, $etitle, $edescription, $el
     }
 
     if (elgg_instanceof($entity, 'object', 'agora')) {
-        elgg_load_library('elgg:agora');
-        $entity_icon = elgg_view('output/url', array(
-            'href' => $entity->getURL(),
-            'text' => elgg_view('output/img', array('src' => agora_getImageUrl($entity, 'tiny'), 'class' => "elgg-photo")),
-        ));
+        $entity_icon = elgg_view_entity_icon($entity, 'tiny', ['img_class' => 'elgg-photo']);
     }
     else if (elgg_instanceof($entity, 'object', 'lcourt')) {
         elgg_load_library('elgg:leaguemanager');

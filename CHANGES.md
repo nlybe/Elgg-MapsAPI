@@ -2,6 +2,10 @@
 
 ## CHANGE LOG
 
+2.9.7	(Mar 2018)
+--------------------------------
+- Changed icon URL for agora entities
+
 2.9.6	(Feb 2018)
 --------------------------------
 - Small improvements to autocomplete input
