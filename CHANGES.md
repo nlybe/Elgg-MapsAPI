@@ -2,6 +2,10 @@
 
 ## CHANGE LOG
 
+2.9.8	(Aug 2018)
+--------------------------------
+- Fix obsolete function
+
 2.9.7	(Mar 2018)
 --------------------------------
 - Changed icon URL for agora entities
