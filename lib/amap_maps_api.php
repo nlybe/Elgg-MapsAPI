@@ -622,7 +622,6 @@ function amap_ma_get_timezone_update() {
     return false;
 }
 
-// 
 /**
  * Hack for disable public access to maps for certains sites // OBS
  * Remove it (remove also from other plugins) or improve it in order to hide map from closed sites
