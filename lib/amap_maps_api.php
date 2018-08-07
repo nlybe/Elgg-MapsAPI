@@ -621,3 +621,9 @@ function amap_ma_get_timezone_update() {
 
     return false;
 }
+
+// hack for disable public access to maps for certains sites // OBS
+function amap_ma_not_permit_public_access() {
+    
+    return false;
+}
