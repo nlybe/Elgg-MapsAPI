@@ -338,17 +338,6 @@ function amap_ma_check_if_newest_tab($pluginname = null) {
     return true;
 }
 
-// hack for disable public access to maps for certains sites // OBS
-function amap_ma_not_permit_public_access() {
-    $temp = array();
-    $temp = explode(".", elgg_get_site_entity()->getDomain());
-    if (in_array("socialbusinessworld", $temp)) {
-        return true;
-    }
-
-    return false;
-}
-
 // Check if membersmap is enabled for global map 
 function amap_ma_check_if_membersmap_gm_enabled() {
     $gm_membersmap = trim(elgg_get_plugin_setting('gm_membersmap', AMAP_MA_PLUGIN_ID));
@@ -455,7 +444,8 @@ function amap_ma_get_entity_icon($u) {
             $entity_icon = $u->getIconURL('small');
         } 
         else {
-            $entity_icon = elgg_get_site_url() . "mod/membersmap/graphics/{$user_icon}";
+            $entity_icon = elgg_get_simplecache_url('membersmap/icon/' . amap_ma_get_marker_icon('membersmap'));
+//            $entity_icon = elgg_get_site_url() . "mod/membersmap/graphics/{$user_icon}";
         }
     } else if (elgg_instanceof($u, 'group')) {
         $entity_icon = elgg_get_simplecache_url('groupsmap/icon/' . amap_ma_get_marker_icon('groupsmap'));

@@ -7,10 +7,6 @@
 elgg_load_library('elgg:amap_maps_api');  
 // elgg_load_library('elgg:amap_maps_api_geocoder');  //OBS
 
-if (amap_ma_not_permit_public_access())	{
-	gatekeeper();
-}
-
 // Retrieve layers to show on map
 $layers = amap_ma_get_map_layers();
 // Retrieve default layer
