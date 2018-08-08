@@ -13,12 +13,13 @@ echo elgg_view('navigation/tabs', array(
             'href' => '/admin/settings/amap_maps_api?tab=general_options',
             'selected' => ($tab == 'general_options'),
         ),	
-/* temporarily anavailable
+
         array(
             'text' => elgg_echo('amap_maps_api:settings:tabs:global_options'),
             'href' => '/admin/settings/amap_maps_api?tab=global_options',
             'selected' => ($tab == 'global_options'),
         ),
+/* temporarily anavailable        
         array( 
             'text' => elgg_echo('amap_maps_api:settings:tabs:personalized_options'),
             'href' => '/admin/settings/amap_maps_api?tab=personalized_options',

@@ -340,6 +340,10 @@ function amap_ma_check_if_newest_tab($pluginname = null) {
 
 // Check if membersmap is enabled for global map 
 function amap_ma_check_if_membersmap_gm_enabled() {
+    if (!elgg_is_active_plugin("membersmap")) {
+        return false;
+    }
+    
     $gm_membersmap = trim(elgg_get_plugin_setting('gm_membersmap', AMAP_MA_PLUGIN_ID));
 
     if ($gm_membersmap == AMAP_MA_GENERAL_YES && elgg_is_active_plugin('membersmap')) {
@@ -351,6 +355,10 @@ function amap_ma_check_if_membersmap_gm_enabled() {
 
 // Check if groupsmap is enabled for global map 
 function amap_ma_check_if_groupsmap_gm_enabled() {
+    if (!elgg_is_active_plugin("groupsmap")) {
+        return false;
+    }
+    
     $gm_groupsmap = trim(elgg_get_plugin_setting('gm_groupsmap', AMAP_MA_PLUGIN_ID));
 
     if ($gm_groupsmap == AMAP_MA_GENERAL_YES && elgg_is_active_plugin('groupsmap')) {
@@ -362,6 +370,10 @@ function amap_ma_check_if_groupsmap_gm_enabled() {
 
 // Check if agora is enabled for global map 
 function amap_ma_check_if_agora_gm_enabled() {
+    if (!elgg_is_active_plugin("agora")) {
+        return false;
+    }
+    
     $gm_agora = trim(elgg_get_plugin_setting('gm_agora', AMAP_MA_PLUGIN_ID));
 
     if ($gm_agora == AMAP_MA_GENERAL_YES && elgg_is_active_plugin('agora')) {
@@ -373,6 +385,10 @@ function amap_ma_check_if_agora_gm_enabled() {
 
 // Check if pagesmap is enabled for global map 
 function amap_ma_check_if_pagesmap_gm_enabled() {
+    if (!elgg_is_active_plugin("pagesmap") || !elgg_is_active_plugin("pages")) {
+        return false;
+    }
+    
     $gm_pagesmap = trim(elgg_get_plugin_setting('gm_pagesmap', AMAP_MA_PLUGIN_ID));
 
     if ($gm_pagesmap == AMAP_MA_GENERAL_YES && elgg_is_active_plugin('pagesmap') && elgg_is_active_plugin('pages')) {

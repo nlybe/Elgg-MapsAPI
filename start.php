@@ -134,17 +134,14 @@ function amap_maps_api_init() {
  * @return bool
  */
 function amap_maps_api_page_handler($page) {
-    $base = elgg_get_plugins_path() . 'amap_maps_api/pages/amap_maps_api';
-
-    if (!isset($page[0])) {
-        $page[0] = 'all';
-    }
-
-    $vars = array();
     $vars['page'] = $page[0];
-
-    require_once "$base/global.php";
-
+    switch ($page[0]) {
+        
+        default:
+            echo elgg_view_resource('amap_maps_api/global');
+            break;
+    }
+    
     return true;
 }
 

@@ -2,6 +2,10 @@
 
 ## CHANGE LOG
 
+2.9.9	(Aug 2018)
+--------------------------------
+- Enabled the option to show global map for all entities with search filter
+
 2.9.8	(Aug 2018)
 --------------------------------
 - Fix obsolete function

@@ -176,6 +176,10 @@ $language = array(
     'amap_maps_api:postal_address:postal_code' => 'Postal code',
     'amap_maps_api:postal_address:region' => 'State',
     'amap_maps_api:postal_address:country' => 'Country',    
+    
+    // nearby 
+    'amap_maps_api:global:nearby:search' => 'Entities near "%s"', 
+    'amap_maps_api:global:newest' => 'Map with %s newest entities', 
 );
 
 add_translation('en', $language);

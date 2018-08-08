@@ -178,3 +178,13 @@ input.gllpSearchButton	{
 	margin-right: 20px;
 }
 
+#globalmap_legend {
+    padding: 5px 0px;
+    text-align: center;
+    height: 32px;
+}
+
+#globalmap_legend img {
+    vertical-align: middle;
+    margin-left: 10px;
+}
