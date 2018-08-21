@@ -25,9 +25,7 @@
 <?php
     }
     else {
-?>
-        <div id="map" style="width:<?php echo $mapwidth; ?>; height:<?php echo $mapheight; ?>;"></div>
-<?php        
+?><div id="map" style="width:<?php echo $mapwidth; ?>; height:<?php echo $mapheight; ?>;"></div><?php        
     }
 ?>
 

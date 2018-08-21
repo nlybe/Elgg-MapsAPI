@@ -22,10 +22,12 @@ if (elgg_instanceof($entity) && $show_map) {
     if ($entity->getLatitude() && $entity->getLongitude()) {
         elgg_require_js("amap_maps_api/location_map");    
     
-        if (($entity instanceof \ElggUser) || ($entity instanceof \ElggGroup))
+        if (($entity instanceof \ElggUser) || ($entity instanceof \ElggGroup)) {
             $title_cleared = amap_ma_remove_shits($entity->name);
-        else
+        }
+        else {
             $title_cleared = amap_ma_remove_shits($entity->title);
+        }
             
         echo elgg_format_element('span', ['id' => 'entity_title', 'style' => 'display:none;'], $title_cleared);
         echo elgg_format_element('span', ['id' => 'entity_lat', 'style' => 'display:none;'], $entity->getLatitude());

@@ -11,11 +11,12 @@ define(function (require) {
         var zoom = parseInt($('#map_zoom').text());
         var marker = $('#entity_marker').text();
         var gm = google.maps;   
- 
+
         // ensure that zoom is integer
-        if (isNaN(zoom))
+        if (isNaN(zoom)) {
             zoom = 12;
-            
+        }
+
         infowindow = new google.maps.InfoWindow();
         var myLatlng = new google.maps.LatLng(entity_lat,entity_lon);
         var mapOptions = {

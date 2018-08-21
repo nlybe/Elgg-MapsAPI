@@ -2,9 +2,13 @@
 
 ## CHANGE LOG
 
+2.9.10	(Aug 2018)
+--------------------------------
+- The location_map input can load now custom zoom for map
+
 2.9.9	(Aug 2018)
 --------------------------------
-- Enabled the option to show global map for all entities with search filter
+- Added the option to show global map for all entities with search filter
 
 2.9.8	(Aug 2018)
 --------------------------------
