@@ -398,6 +398,23 @@ function amap_ma_check_if_pagesmap_gm_enabled() {
     return false;
 }
 
+// Check if pagesmap is enabled for global map 
+function amap_ma_check_if_photosmap_gm_enabled() {
+    
+    if (!elgg_is_active_plugin("photosmap") || !elgg_is_active_plugin("tidypics")) {
+        error_log('lalala 2');
+        return false;
+    }
+    
+    $gm_photosmap = trim(elgg_get_plugin_setting('gm_photosmap', AMAP_MA_PLUGIN_ID));
+    
+    if ($gm_photosmap == AMAP_MA_GENERAL_YES) {
+        return true;
+    }
+
+    return false;
+}
+
 // remove single and double quotes from strings
 function amap_ma_remove_shits($toclear) {
     $cleared = str_replace("'", "&#39;", $toclear);
@@ -480,6 +497,11 @@ function amap_ma_get_entity_icon($u) {
         //$entity_icon = elgg_get_site_url() . 'mod/pagesmap/graphics/' . amap_ma_get_marker_icon('pagesmap');
         $entity_icon = elgg_get_simplecache_url('pagesmap/icon/' . amap_ma_get_marker_icon('pagesmap'));
     }
+    else if (elgg_instanceof($u, 'object', 'image')) {
+        //$entity_icon = elgg_get_site_url() . 'mod/pagesmap/graphics/' . amap_ma_get_marker_icon('pagesmap');
+        $entity_icon = $u->getIconURL('tiny');
+        $entity_icon = elgg_get_simplecache_url('photosmap/icon/photography.png');
+    }
         
     return $entity_icon;
 }
@@ -536,8 +558,9 @@ function amap_ma_get_initial_limit($pluginname) {
 
 // get initial radius when searching by location
 function amap_ma_get_initial_radius($pluginname) {
-    if (!$pluginname)
+    if (!$pluginname) {
         return AMAP_MA_RADIUS_DEFAULT;
+    }
 
     $radius = trim(elgg_get_plugin_setting('mylocation_radius', $pluginname));
     if (is_numeric($radius) && $radius > 0) {
@@ -647,4 +670,30 @@ function amap_ma_get_timezone_update() {
 function amap_ma_not_permit_public_access() {
     
     return false;
+}
+
+/** 
+ * Reverse geocoding
+ * 
+ * @param type $lat
+ * @param type $lng
+ * @return string
+ */
+function amap_ma_reverse_geocoding($lat = '', $lng = '') {
+    $gapi_key_reverse_geocoding = trim(elgg_get_plugin_setting('gapi_key_reverse_geocoding', AMAP_MA_PLUGIN_ID));
+    if (!$gapi_key_reverse_geocoding && elgg_is_admin_logged_in()) {
+        register_error('amap_maps_api:missing:gapi_key_reverse_geocoding');
+        return 0;
+    }
+
+    $endpoint = "https://maps.googleapis.com/maps/api/geocode/json?key={$gapi_key_reverse_geocoding}&latlng=".trim($lat).",".trim($lng)."&sensor=false";
+    $raw = @file_get_contents($endpoint);
+    $json_data = json_decode($raw);
+    //var_dump($json_data->results);  //dumping result
+    if ($json_data->status == "OK") {
+//        $address = explode(",", $json_data->results[0]->formatted_address);
+        return $json_data->results[0]->formatted_address;
+    }    
+        
+    return 0;
 }

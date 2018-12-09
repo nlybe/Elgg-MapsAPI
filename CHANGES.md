@@ -2,6 +2,16 @@
 
 ## CHANGE LOG
 
+2.9.11	(Dec 2018)
+--------------------------------
+- Added clickable index on global map in order to show/hide different types of entities
+- Added messages on location_map input
+- Added location_map and autocomplete input field on list for groups on profile_manager plugin
+- The center of the map on location_map input is now customized (not according the marker)
+- Fixed issue when having two maps on group view, so both maps are now displayed
+- Added support for map of photos, based on tidypics and photosmap plugins
+- Improved the way that location is specified
+
 2.9.10	(Aug 2018)
 --------------------------------
 - The location_map input can load now custom zoom for map

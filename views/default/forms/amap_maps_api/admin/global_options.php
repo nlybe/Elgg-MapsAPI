@@ -20,6 +20,15 @@ $maponmenufield = elgg_view('input/dropdown', array('name' => 'params[maponmenu]
 $maponmenufield .= "<span class='elgg-subtext'>" . elgg_echo('amap_maps_api:settings:maponmenu:note') . "</span>";
 echo elgg_view_module("inline", elgg_echo('amap_maps_api:settings:maponmenu'), $maponmenufield);
 
+// enable global search map
+$gm_cluster = $plugin->gm_cluster;
+if (empty($gm_cluster)) {
+    $gm_cluster = AMAP_MA_GENERAL_NO;
+}
+$gm_clusterfield = elgg_view('input/dropdown', array('name' => 'params[gm_cluster]', 'value' => $gm_cluster, 'options_values' => $potential_yesno));
+$gm_clusterfield .= "<span class='elgg-subtext'>" . elgg_echo('amap_maps_api:settings:gm_cluster:note') . "</span>";
+echo elgg_view_module("inline", elgg_echo('amap_maps_api:settings:gm_cluster'), $gm_clusterfield);
+
 // entities selection for global map
 if (elgg_is_active_plugin("membersmap") || elgg_is_active_plugin("groupsmap") || elgg_is_active_plugin("agora") || elgg_is_active_plugin("pagesmap")) {
     $gm_entities = '';
@@ -74,6 +83,19 @@ if (elgg_is_active_plugin("membersmap") || elgg_is_active_plugin("groupsmap") ||
         $gm_entities .= "<span class='elgg-subtext'>" . elgg_echo('amap_maps_api:settings:pagesmap:note') . "</span>";
         $gm_entities .= '</div>';
     }
+    
+    if (elgg_is_active_plugin("photosmap")) {
+        $gm_photosmap = $plugin->gm_photosmap;
+        if (empty($gm_photosmap)) {
+            $gm_photosmap = AMAP_MA_GENERAL_YES;
+        }
+
+        $gm_entities .= '<div class="amap_settings_box">';
+        $gm_entities .= "<span class='txt_label'>" . elgg_echo('amap_maps_api:settings:photos') . ": </span>";
+        $gm_entities .= elgg_view('input/dropdown', array('name' => 'params[gm_photosmap]', 'value' => $gm_photosmap, 'options_values' => $potential_yesno));
+        $gm_entities .= "<span class='elgg-subtext'>" . elgg_echo('amap_maps_api:settings:photos:note') . "</span>";
+        $gm_entities .= '</div>';
+    }    
 
     echo elgg_view_module("inline", elgg_echo('amap_maps_api:settings:entities'), $gm_entities);
 } else {

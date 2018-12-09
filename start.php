@@ -117,6 +117,9 @@ function amap_maps_api_init() {
         // Add profile fields
         profile_manager_add_custom_field_type("custom_profile_field_types", 'location_map', elgg_echo("amap_maps_api:input:map:title"), $profile_options);
         profile_manager_add_custom_field_type("custom_profile_field_types", 'location_autocomplete', elgg_echo("amap_maps_api:input:autocomplete:title"), $profile_options);
+        
+        profile_manager_add_custom_field_type("custom_group_field_types", 'location_map', elgg_echo("amap_maps_api:input:map:title"), $profile_options);
+        profile_manager_add_custom_field_type("custom_group_field_types", 'location_autocomplete', elgg_echo("amap_maps_api:input:autocomplete:title"), $profile_options);
     }
 
     // Register actions admin
@@ -182,12 +185,18 @@ function amap_ma_geolocate($event, $object_type, $object) {
 
         $lat = get_input("latitude");
         $lng = get_input("longitude");
-        $location = $object->location;
-        if ($location || (isset($lat) && isset($lng))) {
-            $ccc = amap_ma_save_object_coords($location, $object, AMAP_MA_PLUGIN_ID, (isset($lat) ? $lat : ''), (isset($lng) ? $lng : ''));
+        if ($object->location || (isset($lat) && isset($lng))) {
+            $ccc = amap_ma_save_object_coords($object->location, $object, AMAP_MA_PLUGIN_ID, (isset($lat) ? $lat : ''), (isset($lng) ? $lng : ''));
         } else {
             $object->setLatLong('', '');
         }
+        
+        // If object location is empty but lat and lng are set, find and assign the location to the object
+        if (!$object->location && isset($lat) && isset($lng)) {
+            $object->location = amap_ma_reverse_geocoding($lat, $lng);
+            $object->save();
+        }
+        
 
         // update timezone, if enabled
         if (amap_ma_get_timezone_update() && $object->getLatitude() && $object->getLongitude()) {

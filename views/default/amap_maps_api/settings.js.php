@@ -13,6 +13,7 @@ $settings = [
     'default_zoom' => amap_ma_get_map_zoom(),
     'cluster' => amap_ma_get_map_clustering(),
     'cluster_zoom' => AMAP_MA_CUSTOM_CLUSTER_ZOOM,
+    'gm_cluster' => amap_ma_get_map_gm_clustering(),
     'unitmeas' => elgg_extract('unitmeas', $map_settings),
     'layers' => json_encode(amap_ma_get_map_layers()),
     'osm_base_layer' => amap_ma_get_osm_base_layer(),

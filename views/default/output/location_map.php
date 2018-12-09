@@ -10,6 +10,7 @@ $entity = $vars["entity"];
 $map_width = $vars['map_width'];
 $map_height = $vars['map_height'];
 $map_zoom = $vars['map_zoom'];
+$map_center = $vars['map_center'];
 $marker = $vars['marker'];
 $show_map = $vars["show_map"];
 
@@ -33,12 +34,13 @@ if (elgg_instanceof($entity) && $show_map) {
         echo elgg_format_element('span', ['id' => 'entity_lat', 'style' => 'display:none;'], $entity->getLatitude());
         echo elgg_format_element('span', ['id' => 'entity_lon', 'style' => 'display:none;'], $entity->getLongitude());
         echo elgg_format_element('span', ['id' => 'map_zoom', 'style' => 'display:none;'], $map_zoom);
+        echo elgg_format_element('span', ['id' => 'map_center', 'style' => 'display:none;'], $map_center);
         if (!empty($marker)) {
             echo elgg_format_element('span', ['id' => 'entity_marker', 'style' => 'display:none;'], $marker);
         }
 ?>
 
-        <div id="map" style="width:<?php echo $map_width; ?>; height:<?php echo $map_height; ?>;"></div>
+        <div id="location_map" style="width:<?php echo $map_width; ?>; height:<?php echo $map_height; ?>;"></div>
 
 <?php 
     }

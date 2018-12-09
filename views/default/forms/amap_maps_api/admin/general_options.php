@@ -1,9 +1,9 @@
 <?php
-
 /**
  * Elgg AgoraMap Maps Api plugin
  * @package amap_maps_api 
  */
+
 $plugin = elgg_get_plugin_from_id('amap_maps_api');
 
 $potential_yesno = array(
@@ -19,6 +19,17 @@ $google_api_key = elgg_view_input('text', array(
     'help' => elgg_echo('amap_maps_api:settings:google_api_key:help'),
         ));
 $apikeys = elgg_format_element('div', ['class' => 'amap_settings_box'], $google_api_key);
+
+
+// Google API for reverse geocoding. It should have access restrictions based on IP address.
+$google_reverse_api_key = elgg_format_element('div', [], elgg_view_input('text', array(
+    'name' => 'params[gapi_key_reverse_geocoding]',
+    'value' => $plugin->gapi_key_reverse_geocoding,
+    'label' => elgg_echo('amap_maps_api:settings:gapi_key_reverse_geocoding'),
+    'help' => elgg_echo('amap_maps_api:settings:gapi_key_reverse_geocoding:help'),
+)));
+$apikeys .= elgg_format_element('div', ['class' => 'amap_settings_box'], $google_reverse_api_key);
+
 
 // set if update timezone or not (timezone field is required on user profile or user settings)
 $update_timezone = $plugin->update_timezone;

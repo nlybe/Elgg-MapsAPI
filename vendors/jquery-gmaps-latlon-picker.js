@@ -129,6 +129,10 @@
                             $(_self.vars.cssID + ".gllpZoom").val(11);
                             _self.vars.map.setZoom(parseInt($(_self.vars.cssID + ".gllpZoom").val()));
                             setPosition(results[0].geometry.location);
+                            
+                            var center = $(_self.vars.cssID + ".gllpCenter").val();
+                            var center_arr = center.split(",");
+                            _self.vars.map.setCenter(new google.maps.LatLng(center_arr[0],center_arr[1]));                            
                         } else {
                             if (!silent) {
                                 displayError(_self.params.strings.error_no_results);
@@ -164,12 +168,22 @@
                 _self.params.defLat = $(_self.vars.cssID + ".gllpLatitude").val() ? $(_self.vars.cssID + ".gllpLatitude").val() : _self.params.defLat;
                 _self.params.defLng = $(_self.vars.cssID + ".gllpLongitude").val() ? $(_self.vars.cssID + ".gllpLongitude").val() : _self.params.defLng;
                 _self.params.defZoom = $(_self.vars.cssID + ".gllpZoom").val() ? parseInt($(_self.vars.cssID + ".gllpZoom").val()) : _self.params.defZoom;
+                _self.params.defCenter = $(_self.vars.cssID + ".gllpCenter").val() ? parseInt($(_self.vars.cssID + ".gllpZoom").val()) : _self.params.defZoom;
 
                 _self.vars.LATLNG = new google.maps.LatLng(_self.params.defLat, _self.params.defLng);
 
                 _self.vars.MAPOPTIONS = _self.params.mapOptions;
                 _self.vars.MAPOPTIONS.zoom = _self.params.defZoom;
-                _self.vars.MAPOPTIONS.center = _self.vars.LATLNG;
+                
+                
+                if ($(_self.vars.cssID + ".gllpCenter").val()) {
+                    var center = $(_self.vars.cssID + ".gllpCenter").val();
+                    var center_arr = center.split(",");
+                    _self.vars.MAPOPTIONS.center = new google.maps.LatLng(center_arr[0],center_arr[1]);
+                }
+                else {
+                    _self.vars.MAPOPTIONS.center = _self.vars.LATLNG;
+                }
 
                 _self.vars.map = new google.maps.Map($(_self.vars.cssID + ".gllpMap").get(0), _self.vars.MAPOPTIONS);
                 _self.vars.geocoder = new google.maps.Geocoder();
@@ -185,6 +199,10 @@
                 // Set position on doubleclick
                 google.maps.event.addListener(_self.vars.map, 'dblclick', function (event) {
                     setPosition(event.latLng);
+                });
+                
+                google.maps.event.addListener(_self.vars.map, 'center_changed', function() { 
+                    $(_self.vars.cssID + ".gllpCenter").val(_self.vars.map.getCenter().lat()+','+_self.vars.map.getCenter().lng());
                 });
 
                 // Set position on marker move
@@ -205,6 +223,10 @@
                     var latlng = new google.maps.LatLng(lat, lng);
                     _self.vars.map.setZoom(parseInt($(_self.vars.cssID + ".gllpZoom").val()));
                     setPosition(latlng);
+                    
+                    var center = $(_self.vars.cssID + ".gllpCenter").val();
+                    var center_arr = center.split(",");
+                    _self.vars.map.setCenter(new google.maps.LatLng(center_arr[0],center_arr[1]));
                 });
 
                 // Search function by search button
@@ -230,6 +252,10 @@
                     var latlng = new google.maps.LatLng(lat, lng);
                     _self.vars.map.setZoom(parseInt($(_self.vars.cssID + ".gllpZoom").val()));
                     setPosition(latlng);
+                    
+                    var center = $(_self.vars.cssID + ".gllpCenter").val();
+                    var center_arr = center.split(",");
+                    _self.vars.map.setCenter(new google.maps.LatLng(center_arr[0],center_arr[1]));
                 });
             }
 
@@ -243,6 +269,8 @@
             (new GMapsLatLonPicker()).init($(this));
         });
     });
+    
+
 
     $(document).bind("location_changed", function (event, object) {
         console.log("changed: " + $(object).attr('id'));

@@ -30,7 +30,9 @@ $language = array(
     'amap_maps_api:form:location' => 'Location', 
     'amap_maps_api:form:setlocation' => 'Location', 
     'amap_maps_api:form:search' => 'Search', 
-    'amap_maps_api:form:latlon' => 'Lat/Lon: ',     
+    'amap_maps_api:form:latlon' => 'Lat/Lon: ',  
+    'amap_maps_api:location_input:location' => 'Location: ', 
+    'amap_maps_api:location_input:pre' => 'Drag the marker to exact location', 
 
     // settings
     'amap_maps_api:settings:google_maps' => 'Google Maps settings',
@@ -69,6 +71,8 @@ $language = array(
     'amap_maps_api:settings:default_radius:note' => 'Determine the default radius on personalized map searches in <strong>%s</strong> (as was set in General Maps Options).',    
     'amap_maps_api:settings:maponmenu' => 'Enable Global Entities Map and Search',
     'amap_maps_api:settings:maponmenu:note' => 'Select Yes if you want to enable global map search on all entities with geolocation',
+    'amap_maps_api:settings:gm_cluster' => 'Use cluster feature on Global Map', 
+    'amap_maps_api:settings:gm_cluster:note' => 'Select Yes for clustering nearby entities on global map. If disabled, an index table will be displayed for showing/hiding entities', 
     'amap_maps_api:settings:personalizedmap' => 'Enable personalized Map and Search',
     'amap_maps_api:settings:personalizedmap:note' => 'Select Yes if you want to enable a personalized map for users, so you can search entities close to each user.',
     'amap_maps_api:settings:geolocation:title' => 'Select entities for personalized services',
@@ -81,6 +85,8 @@ $language = array(
     'amap_maps_api:settings:groupsmap:note' => 'Select Yes if you want to include groups on global entities map ',
     'amap_maps_api:settings:agora' => 'Include Classifieds',
     'amap_maps_api:settings:agora:note' => 'Select Yes if you want to include classifieds on global entities map ',
+    'amap_maps_api:settings:photos' => 'Include Photos',
+    'amap_maps_api:settings:photos:note' => 'Select Yes if you want to include photos on global entities map ',
     'amap_maps_api:settings:pagesmap' => 'Include Pages',
     'amap_maps_api:settings:pagesmap:note' => 'Select Yes if you want to include Pages on global entities map ',    
     'amap_maps_api:settings:gm_init' => 'Map Initialization',
@@ -96,8 +102,6 @@ $language = array(
     'amap_maps_api:settings:tabs:general_options' => 'General Maps Options',
     'amap_maps_api:settings:tabs:global_options' => 'Global Map Options',
     'amap_maps_api:settings:tabs:personalized_options' => 'Personalized Map Options',
-    'amap_maps_api:settings:gm_cluster' => 'Use cluster feature on Global Map', 
-    'amap_maps_api:settings:gm_cluster:note' => 'Select Yes for clustering nearby entities on map. If disabled, an index table will be displayed for showing/hiding entities', 
     'amap_maps_api:settings:layers' => 'Map Layers',
     'amap_maps_api:settings:layers_select' => 'Select which layers will be available on the map. At least one must be checked:',
     'amap_maps_api:settings:default_layer' => 'Select the default layer:',
@@ -150,7 +154,11 @@ $language = array(
     'amap_maps_api:search:personalized:radius' => 'Radius search: ',
     'amap_maps_api:search:personalized:empty' => '<h3>No results on maps</h3>',
     'amap_maps_api:search:proximity' => '%2$s km',
-    'amap_maps_api:search_types:proximity' => 'Location',    
+    'amap_maps_api:search_types:proximity' => 'Location',  
+    'amap_maps_api:settings:gapi_key_reverse_geocoding' => 'Enter Google API key for reverse geocoding',
+    'amap_maps_api:settings:gapi_key_reverse_geocoding:help' => 'It should have access restrictions based on IP address.',
+    'amap_maps_api:missing:gapi_key_reverse_geocoding' => 'Google API key for reverse geocoding is missing',   
+
     
     // geo 
     'amap_maps_api:settings:proximity_search' => 'Enable proximity search in Elgg search results',

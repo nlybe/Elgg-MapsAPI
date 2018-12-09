@@ -37,7 +37,7 @@ if (!$hide_label) {
 
 <fieldset class="gllpLatlonPicker">
 <?php 
-    $search_box = elgg_view("input/location_autocomplete", array(
+    $search_box .= elgg_view("input/location_autocomplete", array(
         'name' => 'location',
         'value' => $location,
         'class' => 'gllpSearchField',
@@ -48,6 +48,7 @@ if (!$hide_label) {
         'value' => elgg_echo("amap_maps_api:form:search"),
         'class' => 'gllpSearchButton elgg-button elgg-button-submit',
     ));	
+    $search_box .= elgg_format_element('p', ['class' => 'location_input_pre'], elgg_echo('amap_maps_api:location_input:pre'));
     echo elgg_format_element('div', [], $search_box);
         
     //$coords_box = elgg_echo("amap_maps_api:form:latlon"); //OBS
@@ -66,6 +67,11 @@ if (!$hide_label) {
         'name' => 'map_zoom',
         'value' => ($entity->map_zoom?$entity->map_zoom:amap_ma_get_map_zoom()),
         'class' => 'gllpZoom',
+    ));
+    $coords_box .= elgg_view("input/hidden", array(
+        'name' => 'map_center',
+        'value' => ($entity->map_center?$entity->map_center:''),
+        'class' => 'gllpCenter',
     ));    
         
     echo elgg_format_element('div', ['style' => ($hide_coords_box?'display:none':'')], $coords_box);

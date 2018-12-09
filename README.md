@@ -1,13 +1,13 @@
-## AgoraMap Maps Api Plugin for Elgg
+# AgoraMap Maps Api Plugin for Elgg
 
 Elgg plugin containing PHP and JS libraries for other map entities plugins.
 
-== Contents ==
+#### Contents
 
 1. Features
 2. Installation
 
-### 1. Features
+## 1. Features
 
 - Load all required JS libraries for other map aware Elgg plugins
 - Elgg input for location autocomplete, compatible with Profile Manager plugin
@@ -16,7 +16,7 @@ Elgg plugin containing PHP and JS libraries for other map entities plugins.
 - Option to select the default layer
 - Various options on configure in settings such as default location, default zoom, default width & height of map, clustering (yes/no), distance unit of measurement
 
-### 2. Installation
+## 2. Installation
 
 Requires: Elgg 2.1 or higher
 
@@ -25,7 +25,7 @@ Requires: Elgg 2.1 or higher
 3. "In Administration/Configure/Settings/AgoraMap Maps API" you must enter API keys and basic map options
 4. Optionally in "Administration/Configure/Settings/AgoraMap Maps API", run once 'Batch Users Geolocation' for geolocate current users
 
-### Issues
+## Issues
 - On amap_ma_geolocate function, the call of amap_ma_get_timezone_update() may be is not needed.
 
 

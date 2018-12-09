@@ -1,7 +1,7 @@
 <?php
 /**
- * Elgg MembersMap Plugin
- * @package membersmap 
+ * Elgg AgoraMap Maps Api plugin
+ * @package amap_maps_api 
  */
 
 if (!elgg_is_xhr()) {
@@ -123,6 +123,34 @@ if (amap_ma_check_if_pagesmap_gm_enabled()) {
 }
 /////////////////////////////////////////////////////
 
+if (amap_ma_check_if_photosmap_gm_enabled()) {
+    $options_p = $options;
+    $options_p['type'] = "object";
+    $options_p['subtype'] = 'image';
+    if ($s_keyword) {
+        $db_prefix = elgg_get_config("dbprefix");
+        $query = sanitise_string($s_keyword);
+
+        $options_p["joins"] = array("JOIN {$db_prefix}objects_entity ge ON e.guid = ge.guid");
+        $where = "(ge.title LIKE '%$query%' OR ge.description LIKE '%$query%')";
+        $options_p["wheres"] = array($where);
+    }
+
+    if ($coords) {
+        $search_location_txt = $s_location;
+        $s_lat = $coords['lat'];
+        $s_long = $coords['long'];
+
+        if ($s_lat && $s_long) {
+            $options_p = add_order_by_proximity_clauses($options_p, $s_lat, $s_long);
+            $options_p = add_distance_constraint_clauses($options_p, $s_lat, $s_long, $s_radius);
+        }
+    }
+    $images = elgg_get_entities_from_metadata($options_p);
+    $entities = array_merge($entities, $images);
+}
+/////////////////////////////////////////////////////
+
 $map_objects = [];
 if ($entities) {
     foreach ($entities as $entity) {
@@ -144,19 +172,22 @@ if ($entities) {
             $object_x['info_window'] = $object_x['icon'].' '.$object_x['title'];
             $object_x['info_window'] .= ($object_x['location']?'<br/>'.$object_x['location']:'');
             $object_x['info_window'] .= ($object_x['other_info']?'<br/>'.$object_x['other_info']:'');
-            $object_x['info_window'] .= ($object_x['description']?'<br/>'.$object_x['description']:'');            
+            $object_x['info_window'] .= ($object_x['description']?'<br/>'.$object_x['description']:''); 
+            if ($e instanceof \ElggUser) {
+                $object_x['type'] = 'user';
+            }
+            else if ($e instanceof \ElggGroup) {
+                $object_x['type'] = 'group';
+            }
+            else {
+                $object_x['type'] = $e->getSubtype();
+            } 
             array_push($map_objects, $object_x);        
         }
     }
     
     $sidebar = '';
-    if (amap_ma_check_if_add_sidebar_list('membersmap')) {
-        $box_color_flag = true;
-        foreach ($entities as $entity) {
-            $sidebar .= elgg_view('membersmap/sidebar', array('entity' => $entity, 'box_color' => ($box_color_flag ? 'box_even' : 'box_odd')));
-            $box_color_flag = !$box_color_flag;
-        }
-    }
+
 } else {
     $content = elgg_echo('amap_maps_api:search:personalized:empty');
 }
@@ -180,6 +211,7 @@ $result = array(
 unset($users);
 unset($groups);
 unset($pages);
+unset($images);
 unset($entities);
 unset($map_objects);
 

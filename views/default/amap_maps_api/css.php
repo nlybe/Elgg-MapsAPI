@@ -188,3 +188,8 @@ input.gllpSearchButton	{
     vertical-align: middle;
     margin-left: 10px;
 }
+
+.location_input_pre {
+    margin: 5px 0 0; 
+    font-size: 90%;
+}
