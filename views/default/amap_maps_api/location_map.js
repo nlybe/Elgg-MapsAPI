@@ -2,12 +2,14 @@ define(function (require) {
     var elgg = require('elgg');
     var $ = require('jquery');
     require('amap_ma_googleapis_js')
+    require(['elgg/widgets'], function (widgets) {
+        widgets.init();
+    });
     
     
     var map_settings = require("amap_maps_api/settings");
     
-    $( document ).ready(function() {
-           
+    function foo(){
         var entity_title = $('#entity_title').text();
         var entity_lat = $('#entity_lat').text();
         var entity_lon = $('#entity_lon').text();
@@ -61,9 +63,11 @@ define(function (require) {
         
         location_map.setCenter(cLatlng);
         
-        return true;		
-    });
+        return true;	    
+    }
     
+    $( document ).ready(foo());
+
 });
 
 

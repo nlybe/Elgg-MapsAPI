@@ -38,11 +38,8 @@ if (elgg_instanceof($entity) && $show_map) {
         if (!empty($marker)) {
             echo elgg_format_element('span', ['id' => 'entity_marker', 'style' => 'display:none;'], $marker);
         }
-?>
-
-        <div id="location_map" style="width:<?php echo $map_width; ?>; height:<?php echo $map_height; ?>;"></div>
-
-<?php 
+        
+        echo elgg_format_element('div', ['id' => 'location_map', 'style' => 'width:'.$map_width.';height:'.$map_height], '');
     }
     else {
         echo $vars["value"];
@@ -51,7 +48,3 @@ if (elgg_instanceof($entity) && $show_map) {
 else {
     echo $vars["value"];
 }
-?>
-
-
-
