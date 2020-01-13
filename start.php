@@ -38,7 +38,7 @@ function amap_maps_api_init() {
     // register extra js files
     $mapkey = trim(elgg_get_plugin_setting('google_api_key', AMAP_MA_PLUGIN_ID));
     elgg_define_js('amap_ma_googleapis_js', array(
-        'src' => "//maps.googleapis.com/maps/api/js?key={$mapkey}&v=3&libraries=places", 
+        'src' => "//maps.googleapis.com/maps/api/js?key={$mapkey}&libraries=places&callback=initAutocomplete", 
         'exports' => 'amap_ma_googleapis_js',
     ));
 
@@ -120,6 +120,18 @@ function amap_maps_api_init() {
         
         profile_manager_add_custom_field_type("custom_group_field_types", 'location_map', elgg_echo("amap_maps_api:input:map:title"), $profile_options);
         profile_manager_add_custom_field_type("custom_group_field_types", 'location_autocomplete', elgg_echo("amap_maps_api:input:autocomplete:title"), $profile_options);
+    }
+
+    if (elgg_is_active_plugin("custom_fields")) {
+        // default options
+        $cf_options = array(
+            "mandatory" => false,
+            "admin_only" => false,
+        );
+
+        // Add custom fields
+        CustomFieldsOptions::add_custom_field_type("entity_field_types", 'location_map', elgg_echo("amap_maps_api:input:map:title"), $cf_options);
+        CustomFieldsOptions::add_custom_field_type("entity_field_types", 'location_autocomplete', elgg_echo("amap_maps_api:input:autocomplete:title"), $cf_options);
     }
 
     // Register actions admin
