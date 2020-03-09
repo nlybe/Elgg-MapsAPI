@@ -154,7 +154,12 @@ if (amap_ma_check_if_photosmap_gm_enabled()) {
 $map_objects = [];
 if ($entities) {
     foreach ($entities as $entity) {
-        $entity = amap_ma_set_entity_additional_info($entity, 'name', 'description', $entity->location);
+        if ($entity instanceof \ElggUser || $entity instanceof \ElggGroup) {
+            $entity = amap_ma_set_entity_additional_info($entity, 'name', 'description', $entity->location);
+        }
+        else {
+            $entity = amap_ma_set_entity_additional_info($entity, 'title', 'description', $entity->location);
+        }
     }
         
     foreach ($entities as $e) {

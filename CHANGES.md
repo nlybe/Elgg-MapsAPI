@@ -2,6 +2,10 @@
 
 ## CHANGE LOG
 
+2.9.12	(Mar 2020)
+--------------------------------
+- Fixed title for pages on global map
+
 2.9.11	(Dec 2018)
 --------------------------------
 - Added clickable index on global map in order to show/hide different types of entities
